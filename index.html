@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Tempo Juntas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #ffebf2;
+            color: #333;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        #contador {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estamos juntas há:</h1>
+    <h2 id="contador"></h2>
+
+    <script>
+        function atualizarContador() {
+            var dataInicio = new Date(2024, 2, 30, 19, 7, 0); // Março é 2 (Janeiro = 0)
+            var agora = new Date();
+            var diferenca = agora - dataInicio;
+
+            var segundos = Math.floor(diferenca / 1000);
+            var minutos = Math.floor(segundos / 60);
+            var horas = Math.floor(minutos / 60);
+            var dias = Math.floor(horas / 24);
+
+            horas = horas % 24;
+            minutos = minutos % 60;
+            segundos = segundos % 60;
+
+            document.getElementById("contador").innerHTML = 
+                dias + " dias, " + horas + " horas, " + minutos + " minutos e " + segundos + " segundos";
+
+            setTimeout(atualizarContador, 1000);
+        }
+
+        atualizarContador();
+    </script>
+</body>
+</html>
